@@ -54,6 +54,12 @@ public class AdminController {
 		return aser.updatebyid(aid, newdata);
 	}
 
+	// 7. update byid only admin data
+	@PutMapping("/adminupdatebyid/{aid}")
+	public String adminupdatebyid(@PathVariable long aid, @RequestBody Admin newdata) {
+		return aser.adminupdatebyid(aid, newdata);
+	}
+
 	// product methods
 
 	// 1.findall products
@@ -76,7 +82,7 @@ public class AdminController {
 
 	// 4.updatebyid product
 	@PutMapping("updatebyidproduct/{pid}")
-	public String updatebyidproduct(@PathVariable long pid,@RequestBody Product newdata) {
+	public String updatebyidproduct(@PathVariable long pid, @RequestBody Product newdata) {
 		return aser.updatebyidproduct(pid, newdata);
 	}
 

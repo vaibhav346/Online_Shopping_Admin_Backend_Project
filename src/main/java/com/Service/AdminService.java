@@ -117,6 +117,36 @@ public class AdminService {
 		return "Admin updated sucessfully";
 	}
 
+	// 7.updatebyid and new record added product
+	public String adminupdatebyid(long aid, Admin newdata) {
+		Admin existingeadmin = arepo.findById(aid).orElse(null);
+		if (existingeadmin == null) {
+			return "Employee is not found";
+		}
+		if (newdata.getAdminusername() == null && newdata.getAdminpassword() == null && newdata.getEmail() == null
+				&& newdata.getImgurl() == null) {
+			return "No New Data provided for updataion";
+		}
+
+		if (newdata.getAdminusername() != null) {
+			existingeadmin.setAdminusername(newdata.getAdminusername());
+		}
+		if (newdata.getAdminpassword() != null) {
+			existingeadmin.setAdminpassword(newdata.getAdminpassword());
+		}
+
+		if (newdata.getEmail() != null) {
+			existingeadmin.setEmail(newdata.getEmail());
+		}
+
+		if (newdata.getImgurl() != null) {
+			existingeadmin.setImgurl(newdata.getImgurl());
+		}
+		arepo.save(existingeadmin);
+		return "Admin updated sucessfully";
+
+	}
+
 	// product methods
 
 	// 1. findall products
@@ -144,9 +174,8 @@ public class AdminService {
 
 		}
 
-		if ( newdata.getName() == null && newdata.getRating() == 0 && newdata.getPrice() == 0
-				&& newdata.getOff() == null && newdata.getDelivery() == null && newdata.getBank() == null
-				&& newdata.getImg() == null) {
+		if (newdata.getName() == null && newdata.getRating() == 0 && newdata.getPrice() == 0 && newdata.getOff() == null
+				&& newdata.getDelivery() == null && newdata.getBank() == null && newdata.getImg() == null) {
 			return "No New data provided for updataion";
 		}
 		if (newdata.getName() != null) {
