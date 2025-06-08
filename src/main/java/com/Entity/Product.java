@@ -1,7 +1,7 @@
 package com.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -22,15 +22,14 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "admin_id")
 	@JsonBackReference
-	private Admin product;
-
+	Admin admin;
 
 	public Product() {
 		super();
 	}
 
 	public Product(Long pid, String name, float rating, float price, String off, String delivery, String bank,
-			String img, Admin product) {
+			String img, Admin admin) {
 		super();
 		this.pid = pid;
 		this.name = name;
@@ -40,7 +39,7 @@ public class Product {
 		this.delivery = delivery;
 		this.bank = bank;
 		this.img = img;
-		this.product = product;
+		this.admin = admin;
 	}
 
 	public Long getPid() {
@@ -107,13 +106,12 @@ public class Product {
 		this.img = img;
 	}
 
-	public Admin getProduct() {
-		return product;
+	public Admin getAdmin() {
+		return admin;
 	}
 
-	public void setProduct(Admin product) {
-		this.product = product;
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
-
 
 }
